@@ -3,51 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHHOBİ LAB - Günün Mesajı</title>
+    <title>SHHOBİ LAB</title>
     <style>
-        body { background-color: #121212; color: #fff; font-family: sans-serif; text-align: center; padding: 40px 20px; }
-        .logo { max-width: 150px; margin-bottom: 20px; }
-        .card { border: 2px solid #39ff14; border-radius: 15px; padding: 25px; box-shadow: 0 0 15px rgba(57,255,20,0.3); background: #1a1a1a; }
-        .message { font-size: 1.2rem; color: #39ff14; font-weight: bold; line-height: 1.5; }
-        .btn { margin-top: 25px; padding: 10px 20px; background: #39ff14; color: #000; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .card {
+            border: 2px solid #39ff14;
+            border-radius: 15px;
+            padding: 40px 25px;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+            background: #1a1a1a;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .message {
+            font-size: 1.3rem;
+            color: #39ff14;
+            font-weight: 500;
+            line-height: 1.6;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            line-height: 1.5;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-note span {
+            color: #39ff14;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <h2>✨ Günün Sürpriz Mesajı ✨</h2>
         <p id="msg" class="message"></p>
-        <button class="btn" onclick="yeniMesaj()">Başka Bir Mesaj Çek 🎲</button>
+    </div>
+
+    <div class="footer-note">
+        <p>SİPARİŞİNİZ İÇİN TEŞEKKÜR EDERİZ.<br>
+        BİZİ DEĞERLENDİRMEYİ VE BİZİ DESTEKLEMEYİ UNUTMAYINIZ.</p>
+        <p>İNSTAGRAM: <span>@shhobilab</span></p>
     </div>
 
     <script>
         const mesajlar = [
-            🌸 "Bugün aynaya bak ve o güzel gülüşünü saklama. Sen, bu dünyadaki en eşsiz detaylardan birisin. Yolun hep açık, kalbin hep ferah olsun."
-
-🛣️ "Hayat bazen uzun ve yorucu bir yolculuk gibi gelebilir. Ama unutma, direksiyon senin ellerinde ve en güzel manzaralar henüz görmediklerin. Gittiğin her yol güzelliklere çıksın!"
-
-✨ "Mutluluk devasa şeylerde değil, işte böyle direksiyon başındayken gözüne çarpan küçücük bir detayda gizlidir. Daima gülümsemek için bir neden bulman dileğiyle..."
-
-💖 "Günün nasıl geçmiş olursa olsun, şu an bu mesajı okuyorsan derin bir nefes al. Her şey yoluna girecek. Sen güçlüsün ve her yeni kilometre, yeni bir umuttur."
-
-🏡 "Gittiğin her yol seni sevdiklerine, huzura ve hayallerine sağ salim ulaştırsın. Aracındaki bu küçük detay, her baktığında sana ne kadar özel olduğunu hatırlatsın."
-
-🎶 "Trafiğe, sese veya koşturmacaya değil; radyoda çalan o sevdiğin şarkıya ve anın güzelliğine odaklan. Sen her şeyin en güzelini hak ediyorsun."
-
-🌟 "Yollar bazen karanlık veya sisli olabilir ama senin içindeki ışık her yeri aydınlatmaya yeter. Gittiğin her yere o güzel enerjini taşı."
-
-🪄 "Aracına eklediğin bu minik süs, aslında kendine ve kendi alanına verdiğin değerin bir yansıması. Lütfen bugün kendine çok iyi bak, çünkü sen çok değerlisin."
-
-💌 "Belki bugün kimse sana ne kadar harika biri olduğunu söylemedi. O yüzden biz söylemek istedik: İyi ki varsın, harika görünüyorsun!"
-
-🍀 "Bizi yol arkadaşın olarak seçtiğin için teşekkür ederiz. Sadece aracını değil, gününü de biraz olsun aydınlatabildiysek ne mutlu bize. Emniyet kemerini tak ve hayatın tadını çıkar!"
+            "Aynaya her baktığında, bu dünyada senden sadece bir tane olduğunu hatırla. Yolun hep açık olsun.",
+            "Hayat direksiyonunda olduğun uzun bir yolculuk. Gittiğin her kilometre sana huzur getirsin.",
+            "Mutluluk, yolda giderken sevdiğin o şarkının radyoda aniden çalması gibidir. Bugün yüzünden gülümseme eksik olmasın.",
+            "Derin bir nefes al. Her şey yolunda ve sen çok değerlisin.",
+            "Gittiğin tüm yollar, sevdiklerine ve hayallerine sağ salim çıksın.",
+            "Bazen sadece durup manzarayı izlemek gerekir. Bugün kendine bir iyilik yap ve anın tadını çıkar.",
+            "Yollar ne kadar virajlı olursa olsun, içindeki güç her zorluğu aşmaya yeter.",
+            "Kendine ayırdığın bu küçük alan, aslında kendi ruhuna verdiğin değerin bir göstergesi.",
+            "Bugün yola çıkmadan önce kendine bir gülümseme hediye et, çünkü bunu çok hak ediyorsun.",
+            "Yolculuğun nereye olursa olsun, kalbindeki iyilik hep seninle gelsin.",
+            "Her yeni gün, tıpkı yeni bir yolculuk gibi taptaze umutlar taşır. Umudunu asla kaybetme.",
+            "Senin enerjin, gittiğin her yere ışık saçıyor. O ışığı asla söndürme.",
+            "Küçük detaylar büyük mutluluklar yaratır. Bu minik dokunuş sana hep neşe versin.",
+            "Emniyet kemerini tak, sevdiğin müziği aç ve bugünün ne kadar güzel geçeceğine odaklan.",
+            "Bazen en güzel varış noktası, yolculuğun ta kendisidir. Anı yaşa.",
+            "Bugün karşına çıkacak her güzellik, kalbindeki sevginin bir yansıması olsun.",
+            "Sen, bu hayattaki en güzel yolculuğun başrolüsün.",
+            "Gözlerindeki ışıltı, en karanlık yolları bile aydınlatacak kadar güçlü.",
+            "Yolun açık, kalbin ferah, günün aydınlık olsun.",
+            "Trafik ne kadar yoğun olursa olsun, içindeki huzuru kimsenin bozmasına izin verme.",
+            "Bugün birine yapacağın küçük bir tebessüm, belki de onun gününü kurtaracak. Gülümse.",
+            "Hayallerine giden yolda asla pes etme. Direksiyon senin ellerinde.",
+            "Kendine ne kadar güvendiğini hatırla; bugüne kadar aştığın yollar bunun en büyük kanıtı.",
+            "Aracına bindiğinde dışarıdaki tüm stresi kapının ardında bırak. Burası senin güvenli alanın.",
+            "İçindeki o güzel çocuğu asla kaybetme, hayata hep o saf sevgiyle bak.",
+            "Yolculuk sadece bir yerden bir yere gitmek değil, kendine doğru yaptığın bir keşiftir.",
+            "Sen harika bir detaysın, tıpkı yaşam alanına kattığın bu güzellik gibi.",
+            "Bugün, dünden daha güzel bir gün olsun senin için.",
+            "Hayatın temposuna kısa bir mola ver, derin bir nefes al ve sadece var olmanın tadını çıkar.",
+            "Geçmiş dikiz aynasında kaldı, sen hep ileriye bak.",
+            "Kalbinin pusulası seni her zaman en doğru yola çıkaracaktır.",
+            "Güzellikler bulaşıcıdır; bugün bu mesajla başlayan pozitif enerjin herkese yayılsın.",
+            "Zor günlerin ardından hep güneş açar. Yeter ki yoluna devam et.",
+            "Bugün kimse sana ne kadar özel olduğunu söylemediyse, biz söyleyelim: Sen çok özelsin.",
+            "Radyoda çalan sıradaki şarkı, hayallerinin ne kadar yakın olduğunu fısıldasın sana.",
+            "Aracının içi nasıl senin yansıman ise, hayat da senin düşüncelerinin yansımasıdır. Hep iyi düşün.",
+            "Yol arkadaşın olarak sadece bu minik süsü değil, bu güzel dileklerimizi de yanına al.",
+            "Gideceğin yere sadece bedeninle değil, huzurla ve mutlulukla varman dileğiyle.",
+            "Küçük bir tebessümle başlayan her yolculuk, güzel bir anıya dönüşür.",
+            "Bugün kendine bir teşekkür et; bugüne kadar gösterdiğin tüm çaba ve güçlü duruşun için.",
+            "Hayat bazen kırmızı ışıkta beklemektir, yeşil yandığında daha güçlü devam edebilmek için.",
+            "Yollar biter, menzile varılır; önemli olan yolda biriktirdiğin o güzel hislerdir.",
+            "Senin varlığın, bu dünyayı daha yaşanabilir kılan o güzel detaylardan biri.",
+            "Güneşe dön yüzünü, gölgeler hep arkanda kalsın.",
+            "Emniyet kemerin bedenini, bu güzel düşünceler ruhunu korusun.",
+            "Bugün mucizelere inan. Belki de bir sonraki virajda seni bekliyorlardır.",
+            "Dışarıda hava nasıl olursa olsun, senin içindeki o bahar hiç bitmesin.",
+            "Kendi değerini başkalarının değil, kalbinin terazisiyle ölç. Sen çok değerlisin.",
+            "Yolculuğun her anı sana yeni bir ilham, yeni bir neşe versin.",
+            "İyi ki varsın. Tüm yolların, kalbin kadar güzel ve temiz yerlere çıksın."
         ];
 
-        function yeniMesaj() {
-            const random = Math.floor(Math.random() * mesajlar.length);
-            document.getElementById("msg").innerText = mesajlar[random];
-        }
-        
-        yeniMesaj(); // Sayfa açılınca çalıştır
+        // Sayfa yüklendiğinde rastgele bir mesaj seç ve ekrana yazdır
+        const random = Math.floor(Math.random() * mesajlar.length);
+        document.getElementById("msg").innerText = "“" + mesajlar[random] + "”";
     </script>
 </body>
 </html>
